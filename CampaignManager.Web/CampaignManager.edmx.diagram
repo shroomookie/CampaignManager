@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4dc57518d84e40b0bc62a8acd81f03bb" Name="Diagram1">
+        <EntityTypeShape EntityType="CampaignManagerModel.Character" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Ability" Width="1.5" PointX="5.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Alignment" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.AlignmentsCharacterClass" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.BaseAttackBonus" Width="1.5" PointX="5.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.CharacterClass" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.ClassSkill" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Race" Width="1.5" PointX="0.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Skill" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.SpellLevel" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Spell" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <AssociationConnector Association="CampaignManagerModel.FK_GameData_Characters_ReferenceData_Alignments_AlignmentId" ManuallyRouted="false" />
+        <AssociationConnector Association="CampaignManagerModel.FK_GameData_Characters_ReferenceData_Races_RaceId" ManuallyRouted="false" />
+        <AssociationConnector Association="CampaignManagerModel.FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId" ManuallyRouted="false" />
+        <AssociationConnector Association="CampaignManagerModel.FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId" ManuallyRouted="false" />
+        <AssociationConnector Association="CampaignManagerModel.FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId" ManuallyRouted="false" />
+        <AssociationConnector Association="CampaignManagerModel.FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId" ManuallyRouted="false" />
+        <AssociationConnector Association="CampaignManagerModel.FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId" ManuallyRouted="false" />
+        <AssociationConnector Association="CampaignManagerModel.FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Adventure" Width="1.5" PointX="9.5845207784252811" PointY="15.411402635002231" />
+        <EntityTypeShape EntityType="CampaignManagerModel.CampaignCharacter" Width="1.5" PointX="0.210976163023606" PointY="26.52888743324619" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Campaign" Width="1.5" PointX="11.234661927090334" PointY="22.922875742857752" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Player" Width="1.5" PointX="10.261030408675332" PointY="8.7890225689807089" />
+        <EntityTypeShape EntityType="CampaignManagerModel.Experience" Width="1.5" PointX="1.2295970773462193" PointY="7.8832453078977975" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

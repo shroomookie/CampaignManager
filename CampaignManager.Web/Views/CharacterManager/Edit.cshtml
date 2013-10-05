@@ -1,0 +1,387 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="column12">
+    <h2>SELECTIONS</h2>
+    <div class="box">
+        <ul id="tabMenu">
+            <li><a href="#Basics">Basics</a></li>
+            <li><a href="#Skills">Skills</a></li>
+            <li><a href="#Feats">Feats</a></li>
+            <li><a href="#Equipment">Equipment</a></li>
+            <li><a href="#Companion">Companion</a></li>
+            <li><a href="#Background">Background</a></li>
+        </ul>
+        <div id="contentFrame">
+            <div class="box dynamicDiv" id="Basics">
+                <h2>General Information</h2>
+                <div class="box boxBorder">
+                    <table>
+                        <tr>
+                            <td data-bind="with: character">
+                                Name<br/>
+                                <input type="text" data-bind="value: Name"/>
+                            </td>
+                            <td data-bind="with: character">
+                                Gender<br/>
+                                <select data-bind="value: Gender">
+                                    <option></option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </td>
+                            <td>
+                                Race<br/>
+                                <select data-bind="
+                                    options: races, 
+                                    optionsCaption: '',
+                                    optionsValue: function(race) {return race.Id;}, 
+                                    optionsText: function(race) {return race.Name;},
+                                    value: raceSelect"
+                                            id ="Race"
+                                            name ="Race">
+                                </select>
+                            </td>
+                            <td data-bind="with: character">
+                                Age<br/>
+                                <input type="text" data-bind="value: Age"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-bind="with: character">
+                                Height<br/>
+                                <input type="text" data-bind="value: Height"/>
+                            </td>
+                            <td data-bind="with: character">
+                                Weight<br/>
+                                <input type="text" data-bind="value: Weight"/>
+                            </td>
+                            <td data-bind="with: character">
+                                Hair<br/>
+                                <input type="text" data-bind="value: Hair"/>
+                            </td>
+                            <td data-bind="with: character">
+                                Eyes<br/>
+                                <input type="text" data-bind="value: Eyes"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Alignment<br/>
+                                <select data-bind="
+                                    options: alignments, 
+                                    optionsCaption: '',
+                                    optionsValue: function (alignment) {return alignment.Id}, 
+                                    optionsText: function (alignment) {return alignment.Name},
+                                    value: alignmentSelect"
+                                        id ="Alignment"
+                                        name ="Alignment">
+                                </select>
+                            </td>
+                            <td>
+                                Deity<br/>
+                                <select>
+                                    <option value="Deity 1">Deity 1</option>
+                                    <option value="Deity 1">Deity 1</option>
+                                    <option value="Deity 1">Deity 1</option>
+                                    <option value="Deity 1">Deity 1</option>
+                                    <option value="Deity 1">Deity 1</option>
+                                </select>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- box will need to have different displays for create and edit -->
+                <div class="width220">
+                    <h2>Ability Scores</h2>
+                    <div class="box boxBorder">
+                        <table>
+                            <tr>
+                                <td>
+                                    STR
+                                </td>
+                                <td>
+                                    10
+                                </td>  
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    <a href="#" onclick="modifyAbility('strength', 1)">+</a> 
+                                    <a href="#" onclick="modifyAbility('strength', -1)">-</a> 
+                                </td>
+                                <td>
+                                    <span id="strengthMod">0</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    DEX
+                                </td>
+                                <td>
+                                    10
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    +
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    CON
+                                </td>
+                                <td>
+                                    <span id="constitution">10</span>
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    +
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    INT
+                                </td>
+                                <td>
+                                    <span id="intelligence">10</span>
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    +
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    WIS
+                                </td>
+                                <td>
+                                    <span id="wisdom">10</span>
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    +
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    CHA
+                                </td>
+                                <td>
+                                    <span id="charisma">10</span>
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                                <td>
+                                    +
+                                </td>
+                                <td>
+                                    0
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    Points Available: <span id="pointsAvailable">12</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="width420">
+                    <h2>Classes</h2>
+                    <div class="box boxBorder">
+                        <table>
+                            <tr>
+                                <td>
+                                    Favored Class 
+                                    <select data-bind="
+                                        options: characterClasses, 
+                                        optionsCaption: '',
+                                        optionsValue: function(characterClass) {return characterClass.Id;}, 
+                                        optionsText: function(characterClass) {return characterClass.Name;}"
+                                        id ="FavoredClass"
+                                        name ="FavoredClass">
+                                    </select>
+                                </td>
+                                <td>
+                                    <!-- disabled unless half elf is selected as race -->
+                                    Bonus Favored Class 
+                                    <select data-bind="
+                                        options: characterClasses, 
+                                        optionsCaption: '',
+                                        optionsValue: function(characterClass) {return characterClass.Id;}, 
+                                        optionsText: function(characterClass) {return characterClass.Name;}"
+                                            id ="FavoredClass1"
+                                            name ="FavoredClass1">
+                                    </select>
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    Class 
+                                    <select data-bind="
+                                        options: characterClasses, 
+                                        optionsCaption: '',
+                                        optionsValue: function(characterClass) {return characterClass.Id;}, 
+                                        optionsText: function(characterClass) {return characterClass.Name;},
+                                        value: characterClassSelect"
+                                        id ="FirstCharacterClass"
+                                        name ="FirstCharacterClass">
+                                    </select>
+                                </td>
+                                <td>
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- disabled unless level is greater than 1 -->
+                                    Class 
+                                    <select data-bind="
+                                        options: characterClasses, 
+                                        optionsCaption: '',
+                                        optionsValue: function(characterClass) {return characterClass.Id;}, 
+                                        optionsText: function(characterClass) {return characterClass.Name;}"
+                                            id ="SecondCharacterClass"
+                                            name ="SecondCharacterClass">
+                                    </select>
+                                </td>
+                                <td>
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <!-- disabled unless level is greater than 2 and two classes are already selected -->
+                                    Class 
+                                    <select data-bind="
+                                        options: characterClasses, 
+                                        optionsCaption: '',
+                                        optionsValue: function(characterClass) {return characterClass.Id;}, 
+                                        optionsText: function(characterClass) {return characterClass.Name;}"
+                                            id ="ThirdCharacterClass"
+                                            name ="ThirdCharacterClass">
+                                    </select>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <h2>Class Features</h2>
+                <div class="box boxBorder">
+                    <!-- needs to be dynamic, only appears if character has levels in a class
+                    boxes are collapsable as well -->
+                    <h2>Barbarian</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Bard</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Cleric</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Druid</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Fighter</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Monk</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Paladin</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Ranger</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Rogue</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Sorcerer</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                    <h2>Wizard</h2>
+                    <div class="box boxBorder">
+                        asdf
+                    </div>
+                </div>
+            </div>
+            <div class="box dynamicDiv" id="Skills">
+                <div class="box boxBorder">
+                    <!-- knockout should build the table for skills -->
+                    <table data-bind="foreach: skills">
+                        <tr>
+                            <td>
+                                <input type="checkbox" disabled="disabled" data-bind="attr: {id: 'skill' + Id}"/>
+                            </td>
+                            <td>
+                                <span data-bind="text: Name"></span>
+                            </td>
+                            <td>
+                                0
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="box dynamicDiv" id="Feats">Feats</div>
+            <div class="box dynamicDiv" id="Equipment">
+                <!-- should only allow purchasing of items at creation
+                    additional items must be added by the dm or a treasure
+                    tool
+                -->
+                Equipment
+            </div>
+            <div class="box dynamicDiv" id="Companion">Companion</div>
+            <div class="box dynamicDiv" id="Background">Background</div>
+        </div>
+    </div>
+</div>
+<div class="column4">
+    <h2>VITAL STATS</h2>
+    <div class="box">
+        <div class="box dynamicDiv">
+            <div data-bind="text: ko.toJSON(character)"></div>
+            <button data-bind="click: saveCharacter">Save</button>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<script type="text/javascript" src="/Scripts/VM/CharacterManager/Edit.js"></script>

@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="column16">
+    <div data-bind="foreach: Spells">
+        <h2 data-bind="text: Name"></h2>
+        <b>School</b> <span data-bind="text: School"></span>
+        <span data-bind="if: SubSchool">(<span data-bind="text: SubSchool"></span>)</span>
+        <span data-bind="if: Descriptor">[<span data-bind="text: Descriptor"></span>]</span>;
+        <b>Level</b>
+        <span data-bind="foreach: Levels">
+            <span data-bind="text: CharacterClass"></span>
+            <span data-bind="text: SpellLevel"></span>
+        </span><br />
+        <b>Casting Time</b> <span data-bind="text: CastingTime"></span><br />
+        <b>Components</b> <span data-bind="text: Components"></span><br />
+        <b>Range</b> <span data-bind="text: Range"></span><br />
+        <span data-bind="if: Area">
+            <b>Area</b> <span data-bind="text: Area"></span><br />
+        </span>
+        <span data-bind="if: Effect">
+            <b>Effect</b> <span data-bind="text: Effect"></span><br />
+        </span>
+        <span data-bind="if: Target">
+            <b>Target</b> <span data-bind="text: Target"></span><br />
+        </span>
+        <b>Duration</b> <span data-bind="text: Duration"></span><br />
+        <b>Saving Throw</b> <span data-bind="text: SavingThrow"></span>;
+        <b>Spell Resistance</b> <span data-bind="text: SpellResistance"></span><br />
+        <span data-bind="html: DescriptionFormatted"></span>
+    </div>
+</div>
+
+<script src="/Scripts/Spell.js"></script>
+

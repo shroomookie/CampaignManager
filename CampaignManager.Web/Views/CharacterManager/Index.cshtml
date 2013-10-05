@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="column16">
+    <ul class="charactermanager">
+        <li>Name</li>
+        <li>Race</li>
+        <li>Class</li>
+        <li>Campaign</li>
+        <li>Status</li>
+    </ul>
+    <ul class="charactermanager" data-bind="foreach: Characters">
+        <li data-bind="text: Name"></li>
+    </ul>
+</div>
+<script type="text/javascript" src="/Scripts/VM/CharacterManager/Index.js"></script>

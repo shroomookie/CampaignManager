@@ -1,0 +1,750 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CampaignManagerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CampaignManagerModelStoreContainer">
+          <EntitySet Name="Characters" EntityType="CampaignManagerModel.Store.Characters" store:Type="Tables" Schema="GameData" />
+          <EntitySet Name="Abilities" EntityType="CampaignManagerModel.Store.Abilities" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="Alignments" EntityType="CampaignManagerModel.Store.Alignments" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="AlignmentsCharacterClasses" EntityType="CampaignManagerModel.Store.AlignmentsCharacterClasses" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="BaseAttackBonuses" EntityType="CampaignManagerModel.Store.BaseAttackBonuses" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="CharacterClasses" EntityType="CampaignManagerModel.Store.CharacterClasses" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="ClassSkills" EntityType="CampaignManagerModel.Store.ClassSkills" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="Races" EntityType="CampaignManagerModel.Store.Races" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="Skills" EntityType="CampaignManagerModel.Store.Skills" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="SpellLevels" EntityType="CampaignManagerModel.Store.SpellLevels" store:Type="Tables" Schema="ReferenceData" />
+          <EntitySet Name="Spells" EntityType="CampaignManagerModel.Store.Spells" store:Type="Tables" Schema="ReferenceData" />
+          <AssociationSet Name="FK_GameData_Characters_ReferenceData_Alignments_AlignmentId" Association="CampaignManagerModel.Store.FK_GameData_Characters_ReferenceData_Alignments_AlignmentId">
+            <End Role="Alignments" EntitySet="Alignments" />
+            <End Role="Characters" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameData_Characters_ReferenceData_Races_RaceId" Association="CampaignManagerModel.Store.FK_GameData_Characters_ReferenceData_Races_RaceId">
+            <End Role="Races" EntitySet="Races" />
+            <End Role="Characters" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId" Association="CampaignManagerModel.Store.FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId">
+            <End Role="Alignments" EntitySet="Alignments" />
+            <End Role="AlignmentsCharacterClasses" EntitySet="AlignmentsCharacterClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId" Association="CampaignManagerModel.Store.FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId">
+            <End Role="CharacterClasses" EntitySet="CharacterClasses" />
+            <End Role="AlignmentsCharacterClasses" EntitySet="AlignmentsCharacterClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId" Association="CampaignManagerModel.Store.FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId">
+            <End Role="CharacterClasses" EntitySet="CharacterClasses" />
+            <End Role="ClassSkills" EntitySet="ClassSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId" Association="CampaignManagerModel.Store.FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="ClassSkills" EntitySet="ClassSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId" Association="CampaignManagerModel.Store.FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId">
+            <End Role="CharacterClasses" EntitySet="CharacterClasses" />
+            <End Role="SpellLevels" EntitySet="SpellLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId" Association="CampaignManagerModel.Store.FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId">
+            <End Role="Spells" EntitySet="Spells" />
+            <End Role="SpellLevels" EntitySet="SpellLevels" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Characters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="RaceId" Type="int" Nullable="false" />
+          <Property Name="Age" Type="nvarchar" MaxLength="10" />
+          <Property Name="Height" Type="nvarchar" MaxLength="10" />
+          <Property Name="Weight" Type="nvarchar" MaxLength="10" />
+          <Property Name="Hair" Type="nvarchar" MaxLength="50" />
+          <Property Name="Eyes" Type="nvarchar" MaxLength="50" />
+          <Property Name="AlignmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Abilities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Alignments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="NameShort" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="AlignmentsCharacterClasses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterClassId" Type="int" Nullable="false" />
+          <Property Name="AlignmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BaseAttackBonuses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="HitDice" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Value" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CharacterClasses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="NameShort" Type="nvarchar" MaxLength="10" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="HitDie" Type="int" Nullable="false" />
+          <Property Name="SkillPoints" Type="int" Nullable="false" />
+          <Property Name="AttackBonusType" Type="nvarchar" MaxLength="50" />
+          <Property Name="FortitudeType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReflexType" Type="nvarchar" MaxLength="50" />
+          <Property Name="WillpowerType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Source" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassSkills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterClassId" Type="int" Nullable="false" />
+          <Property Name="SkillId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Races">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Ability" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Untrained" Type="bit" />
+          <Property Name="ArmorCheckPenalty" Type="bit" />
+          <Property Name="Description" Type="text" />
+          <Property Name="DescriptionFormatted" Type="text" />
+          <Property Name="Source" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SpellLevels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SpellId" Type="int" Nullable="false" />
+          <Property Name="CharacterClassId" Type="int" Nullable="false" />
+          <Property Name="Level" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Spells">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="School" Type="nvarchar" MaxLength="100" />
+          <Property Name="SubSchool" Type="nvarchar" MaxLength="100" />
+          <Property Name="Descriptor" Type="nvarchar" MaxLength="255" />
+          <Property Name="CastingTime" Type="nvarchar" MaxLength="255" />
+          <Property Name="Components" Type="nvarchar" MaxLength="255" />
+          <Property Name="Range" Type="nvarchar" MaxLength="255" />
+          <Property Name="Area" Type="nvarchar" MaxLength="255" />
+          <Property Name="Effect" Type="nvarchar" MaxLength="255" />
+          <Property Name="Targets" Type="nvarchar" MaxLength="255" />
+          <Property Name="Duration" Type="nvarchar" MaxLength="255" />
+          <Property Name="SavingThrow" Type="nvarchar" MaxLength="255" />
+          <Property Name="SpellResistance" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="text" />
+          <Property Name="DescriptionFormatted" Type="text" />
+          <Property Name="Source" Type="nvarchar" MaxLength="100" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_GameData_Characters_ReferenceData_Alignments_AlignmentId">
+          <End Role="Alignments" Type="CampaignManagerModel.Store.Alignments" Multiplicity="1" />
+          <End Role="Characters" Type="CampaignManagerModel.Store.Characters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alignments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="AlignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameData_Characters_ReferenceData_Races_RaceId">
+          <End Role="Races" Type="CampaignManagerModel.Store.Races" Multiplicity="1" />
+          <End Role="Characters" Type="CampaignManagerModel.Store.Characters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Races">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="RaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId">
+          <End Role="Alignments" Type="CampaignManagerModel.Store.Alignments" Multiplicity="1" />
+          <End Role="AlignmentsCharacterClasses" Type="CampaignManagerModel.Store.AlignmentsCharacterClasses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alignments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlignmentsCharacterClasses">
+              <PropertyRef Name="AlignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId">
+          <End Role="CharacterClasses" Type="CampaignManagerModel.Store.CharacterClasses" Multiplicity="1" />
+          <End Role="AlignmentsCharacterClasses" Type="CampaignManagerModel.Store.AlignmentsCharacterClasses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterClasses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlignmentsCharacterClasses">
+              <PropertyRef Name="CharacterClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId">
+          <End Role="CharacterClasses" Type="CampaignManagerModel.Store.CharacterClasses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassSkills" Type="CampaignManagerModel.Store.ClassSkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterClasses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassSkills">
+              <PropertyRef Name="CharacterClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId">
+          <End Role="Skills" Type="CampaignManagerModel.Store.Skills" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassSkills" Type="CampaignManagerModel.Store.ClassSkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassSkills">
+              <PropertyRef Name="SkillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId">
+          <End Role="CharacterClasses" Type="CampaignManagerModel.Store.CharacterClasses" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SpellLevels" Type="CampaignManagerModel.Store.SpellLevels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterClasses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpellLevels">
+              <PropertyRef Name="CharacterClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId">
+          <End Role="Spells" Type="CampaignManagerModel.Store.Spells" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SpellLevels" Type="CampaignManagerModel.Store.SpellLevels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spells">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpellLevels">
+              <PropertyRef Name="SpellId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CampaignManagerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CampaignManagerEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Characters" EntityType="CampaignManagerModel.Character" />
+          <EntitySet Name="Abilities" EntityType="CampaignManagerModel.Ability" />
+          <EntitySet Name="Alignments" EntityType="CampaignManagerModel.Alignment" />
+          <EntitySet Name="AlignmentsCharacterClasses" EntityType="CampaignManagerModel.AlignmentsCharacterClass" />
+          <EntitySet Name="BaseAttackBonuses" EntityType="CampaignManagerModel.BaseAttackBonus" />
+          <EntitySet Name="CharacterClasses" EntityType="CampaignManagerModel.CharacterClass" />
+          <EntitySet Name="ClassSkills" EntityType="CampaignManagerModel.ClassSkill" />
+          <EntitySet Name="Races" EntityType="CampaignManagerModel.Race" />
+          <EntitySet Name="Skills" EntityType="CampaignManagerModel.Skill" />
+          <EntitySet Name="SpellLevels" EntityType="CampaignManagerModel.SpellLevel" />
+          <EntitySet Name="Spells" EntityType="CampaignManagerModel.Spell" />
+          <AssociationSet Name="FK_GameData_Characters_ReferenceData_Alignments_AlignmentId" Association="CampaignManagerModel.FK_GameData_Characters_ReferenceData_Alignments_AlignmentId">
+            <End Role="Alignments" EntitySet="Alignments" />
+            <End Role="Characters" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GameData_Characters_ReferenceData_Races_RaceId" Association="CampaignManagerModel.FK_GameData_Characters_ReferenceData_Races_RaceId">
+            <End Role="Races" EntitySet="Races" />
+            <End Role="Characters" EntitySet="Characters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId" Association="CampaignManagerModel.FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId">
+            <End Role="Alignments" EntitySet="Alignments" />
+            <End Role="AlignmentsCharacterClasses" EntitySet="AlignmentsCharacterClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId" Association="CampaignManagerModel.FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId">
+            <End Role="CharacterClasses" EntitySet="CharacterClasses" />
+            <End Role="AlignmentsCharacterClasses" EntitySet="AlignmentsCharacterClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId" Association="CampaignManagerModel.FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId">
+            <End Role="CharacterClasses" EntitySet="CharacterClasses" />
+            <End Role="ClassSkills" EntitySet="ClassSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId" Association="CampaignManagerModel.FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId">
+            <End Role="CharacterClasses" EntitySet="CharacterClasses" />
+            <End Role="SpellLevels" EntitySet="SpellLevels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId" Association="CampaignManagerModel.FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="ClassSkills" EntitySet="ClassSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId" Association="CampaignManagerModel.FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId">
+            <End Role="Spells" EntitySet="Spells" />
+            <End Role="SpellLevels" EntitySet="SpellLevels" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RaceId" Type="Int32" Nullable="false" />
+          <Property Name="Age" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Height" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Weight" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Hair" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Eyes" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AlignmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alignment" Relationship="CampaignManagerModel.FK_GameData_Characters_ReferenceData_Alignments_AlignmentId" FromRole="Characters" ToRole="Alignments" />
+          <NavigationProperty Name="Race" Relationship="CampaignManagerModel.FK_GameData_Characters_ReferenceData_Races_RaceId" FromRole="Characters" ToRole="Races" />
+        </EntityType>
+        <EntityType Name="Ability">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Alignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="NameShort" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Characters" Relationship="CampaignManagerModel.FK_GameData_Characters_ReferenceData_Alignments_AlignmentId" FromRole="Alignments" ToRole="Characters" />
+          <NavigationProperty Name="AlignmentsCharacterClasses" Relationship="CampaignManagerModel.FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId" FromRole="Alignments" ToRole="AlignmentsCharacterClasses" />
+        </EntityType>
+        <EntityType Name="AlignmentsCharacterClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterClassId" Type="Int32" Nullable="false" />
+          <Property Name="AlignmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Alignment" Relationship="CampaignManagerModel.FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId" FromRole="AlignmentsCharacterClasses" ToRole="Alignments" />
+          <NavigationProperty Name="CharacterClass" Relationship="CampaignManagerModel.FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId" FromRole="AlignmentsCharacterClasses" ToRole="CharacterClasses" />
+        </EntityType>
+        <EntityType Name="BaseAttackBonus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="HitDice" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Value" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CharacterClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="NameShort" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HitDie" Type="Int32" Nullable="false" />
+          <Property Name="SkillPoints" Type="Int32" Nullable="false" />
+          <Property Name="AttackBonusType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FortitudeType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ReflexType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="WillpowerType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Source" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AlignmentsCharacterClasses" Relationship="CampaignManagerModel.FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId" FromRole="CharacterClasses" ToRole="AlignmentsCharacterClasses" />
+          <NavigationProperty Name="ClassSkills" Relationship="CampaignManagerModel.FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId" FromRole="CharacterClasses" ToRole="ClassSkills" />
+          <NavigationProperty Name="SpellLevels" Relationship="CampaignManagerModel.FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId" FromRole="CharacterClasses" ToRole="SpellLevels" />
+        </EntityType>
+        <EntityType Name="ClassSkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterClassId" Type="Int32" Nullable="false" />
+          <Property Name="SkillId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CharacterClass" Relationship="CampaignManagerModel.FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId" FromRole="ClassSkills" ToRole="CharacterClasses" />
+          <NavigationProperty Name="Skill" Relationship="CampaignManagerModel.FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId" FromRole="ClassSkills" ToRole="Skills" />
+        </EntityType>
+        <EntityType Name="Race">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Characters" Relationship="CampaignManagerModel.FK_GameData_Characters_ReferenceData_Races_RaceId" FromRole="Races" ToRole="Characters" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Ability" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Untrained" Type="Boolean" />
+          <Property Name="ArmorCheckPenalty" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="DescriptionFormatted" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Source" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ClassSkills" Relationship="CampaignManagerModel.FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId" FromRole="Skills" ToRole="ClassSkills" />
+        </EntityType>
+        <EntityType Name="SpellLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SpellId" Type="Int32" Nullable="false" />
+          <Property Name="CharacterClassId" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CharacterClass" Relationship="CampaignManagerModel.FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId" FromRole="SpellLevels" ToRole="CharacterClasses" />
+          <NavigationProperty Name="Spell" Relationship="CampaignManagerModel.FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId" FromRole="SpellLevels" ToRole="Spells" />
+        </EntityType>
+        <EntityType Name="Spell">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="School" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="SubSchool" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Descriptor" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="CastingTime" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Components" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Range" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Area" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Effect" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Targets" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Duration" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SavingThrow" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SpellResistance" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="DescriptionFormatted" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Source" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SpellLevels" Relationship="CampaignManagerModel.FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId" FromRole="Spells" ToRole="SpellLevels" />
+        </EntityType>
+        <Association Name="FK_GameData_Characters_ReferenceData_Alignments_AlignmentId">
+          <End Role="Alignments" Type="CampaignManagerModel.Alignment" Multiplicity="1" />
+          <End Role="Characters" Type="CampaignManagerModel.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alignments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="AlignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GameData_Characters_ReferenceData_Races_RaceId">
+          <End Role="Races" Type="CampaignManagerModel.Race" Multiplicity="1" />
+          <End Role="Characters" Type="CampaignManagerModel.Character" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Races">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Characters">
+              <PropertyRef Name="RaceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_Alignments_ReferenceData_Alignments_AlignmentId">
+          <End Role="Alignments" Type="CampaignManagerModel.Alignment" Multiplicity="1" />
+          <End Role="AlignmentsCharacterClasses" Type="CampaignManagerModel.AlignmentsCharacterClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Alignments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlignmentsCharacterClasses">
+              <PropertyRef Name="AlignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_Alignments_ReferenceData_CharacterClasses_CharacterClassId">
+          <End Role="CharacterClasses" Type="CampaignManagerModel.CharacterClass" Multiplicity="1" />
+          <End Role="AlignmentsCharacterClasses" Type="CampaignManagerModel.AlignmentsCharacterClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterClasses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlignmentsCharacterClasses">
+              <PropertyRef Name="CharacterClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_ClassSkills_ReferenceData_CharacterClasses_CharacterClassId">
+          <End Role="CharacterClasses" Type="CampaignManagerModel.CharacterClass" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassSkills" Type="CampaignManagerModel.ClassSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterClasses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassSkills">
+              <PropertyRef Name="CharacterClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_SpellLevels_ReferenceData_CharacterClasses_CharacterClassId">
+          <End Role="CharacterClasses" Type="CampaignManagerModel.CharacterClass" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SpellLevels" Type="CampaignManagerModel.SpellLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CharacterClasses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpellLevels">
+              <PropertyRef Name="CharacterClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_ClassSkills_ReferenceData_Skills_SkillId">
+          <End Role="Skills" Type="CampaignManagerModel.Skill" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassSkills" Type="CampaignManagerModel.ClassSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClassSkills">
+              <PropertyRef Name="SkillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceData_SpellLevels_ReferenceData_Spells_SpellId">
+          <End Role="Spells" Type="CampaignManagerModel.Spell" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SpellLevels" Type="CampaignManagerModel.SpellLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Spells">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpellLevels">
+              <PropertyRef Name="SpellId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CampaignManagerModelStoreContainer" CdmEntityContainer="CampaignManagerEntities">
+          <EntitySetMapping Name="Characters">
+            <EntityTypeMapping TypeName="CampaignManagerModel.Character">
+              <MappingFragment StoreEntitySet="Characters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RaceId" ColumnName="RaceId" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Hair" ColumnName="Hair" />
+                <ScalarProperty Name="Eyes" ColumnName="Eyes" />
+                <ScalarProperty Name="AlignmentId" ColumnName="AlignmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Abilities">
+            <EntityTypeMapping TypeName="CampaignManagerModel.Ability">
+              <MappingFragment StoreEntitySet="Abilities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alignments">
+            <EntityTypeMapping TypeName="CampaignManagerModel.Alignment">
+              <MappingFragment StoreEntitySet="Alignments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameShort" ColumnName="NameShort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlignmentsCharacterClasses">
+            <EntityTypeMapping TypeName="CampaignManagerModel.AlignmentsCharacterClass">
+              <MappingFragment StoreEntitySet="AlignmentsCharacterClasses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CharacterClassId" ColumnName="CharacterClassId" />
+                <ScalarProperty Name="AlignmentId" ColumnName="AlignmentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BaseAttackBonuses">
+            <EntityTypeMapping TypeName="CampaignManagerModel.BaseAttackBonus">
+              <MappingFragment StoreEntitySet="BaseAttackBonuses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="HitDice" ColumnName="HitDice" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CharacterClasses">
+            <EntityTypeMapping TypeName="CampaignManagerModel.CharacterClass">
+              <MappingFragment StoreEntitySet="CharacterClasses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameShort" ColumnName="NameShort" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="HitDie" ColumnName="HitDie" />
+                <ScalarProperty Name="SkillPoints" ColumnName="SkillPoints" />
+                <ScalarProperty Name="AttackBonusType" ColumnName="AttackBonusType" />
+                <ScalarProperty Name="FortitudeType" ColumnName="FortitudeType" />
+                <ScalarProperty Name="ReflexType" ColumnName="ReflexType" />
+                <ScalarProperty Name="WillpowerType" ColumnName="WillpowerType" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassSkills">
+            <EntityTypeMapping TypeName="CampaignManagerModel.ClassSkill">
+              <MappingFragment StoreEntitySet="ClassSkills">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CharacterClassId" ColumnName="CharacterClassId" />
+                <ScalarProperty Name="SkillId" ColumnName="SkillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Races">
+            <EntityTypeMapping TypeName="CampaignManagerModel.Race">
+              <MappingFragment StoreEntitySet="Races">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="CampaignManagerModel.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Ability" ColumnName="Ability" />
+                <ScalarProperty Name="Untrained" ColumnName="Untrained" />
+                <ScalarProperty Name="ArmorCheckPenalty" ColumnName="ArmorCheckPenalty" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescriptionFormatted" ColumnName="DescriptionFormatted" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpellLevels">
+            <EntityTypeMapping TypeName="CampaignManagerModel.SpellLevel">
+              <MappingFragment StoreEntitySet="SpellLevels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SpellId" ColumnName="SpellId" />
+                <ScalarProperty Name="CharacterClassId" ColumnName="CharacterClassId" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spells">
+            <EntityTypeMapping TypeName="CampaignManagerModel.Spell">
+              <MappingFragment StoreEntitySet="Spells">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="School" ColumnName="School" />
+                <ScalarProperty Name="SubSchool" ColumnName="SubSchool" />
+                <ScalarProperty Name="Descriptor" ColumnName="Descriptor" />
+                <ScalarProperty Name="CastingTime" ColumnName="CastingTime" />
+                <ScalarProperty Name="Components" ColumnName="Components" />
+                <ScalarProperty Name="Range" ColumnName="Range" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Effect" ColumnName="Effect" />
+                <ScalarProperty Name="Targets" ColumnName="Targets" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="SavingThrow" ColumnName="SavingThrow" />
+                <ScalarProperty Name="SpellResistance" ColumnName="SpellResistance" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescriptionFormatted" ColumnName="DescriptionFormatted" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
