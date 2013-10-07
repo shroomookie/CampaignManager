@@ -212,6 +212,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdventureController.cs" />
     <Compile Include="Controllers\API\AlignmentController.cs" />
+    <Compile Include="Controllers\API\CampaignController.cs" />
     <Compile Include="Controllers\API\CharacterClassController.cs" />
     <Compile Include="Controllers\API\CharacterManagerController.cs" />
     <Compile Include="Controllers\API\RaceController.cs" />
@@ -332,6 +333,7 @@
       <LastGenOutput>CampaignManager.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\VM\Campaign\Edit.js" />
     <Content Include="Scripts\VM\CharacterManager\Edit.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
