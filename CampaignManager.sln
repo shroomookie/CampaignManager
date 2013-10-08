@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampaignManager.Web", "CampaignManager.Web\CampaignManager.Web.csproj", "{1DECBA27-1E51-4C09-8462-D3DE8F6EEC18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampaignManager.DTO", "CampaignManager.DTO\CampaignManager.DTO.csproj", "{835742E4-11F0-47F9-96E0-8BB689436424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampaignManager.UnitTests", "CampaignManager.UnitTests\CampaignManager.UnitTests.csproj", "{1ACCB035-2861-4A74-8DD7-F82CBFAD6EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{1DECBA27-1E51-4C09-8462-D3DE8F6EEC18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DECBA27-1E51-4C09-8462-D3DE8F6EEC18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DECBA27-1E51-4C09-8462-D3DE8F6EEC18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{835742E4-11F0-47F9-96E0-8BB689436424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{835742E4-11F0-47F9-96E0-8BB689436424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{835742E4-11F0-47F9-96E0-8BB689436424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{835742E4-11F0-47F9-96E0-8BB689436424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ACCB035-2861-4A74-8DD7-F82CBFAD6EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ACCB035-2861-4A74-8DD7-F82CBFAD6EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ACCB035-2861-4A74-8DD7-F82CBFAD6EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ACCB035-2861-4A74-8DD7-F82CBFAD6EBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
