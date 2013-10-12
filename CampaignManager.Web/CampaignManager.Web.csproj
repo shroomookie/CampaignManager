@@ -403,7 +403,12 @@
     <Content Include="Views\Session\Index.cshtml" />
     <Content Include="Views\Session\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CampaignManager.DTO\CampaignManager.DTO.csproj">
+      <Project>{835742e4-11f0-47f9-96e0-8bb689436424}</Project>
+      <Name>CampaignManager.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

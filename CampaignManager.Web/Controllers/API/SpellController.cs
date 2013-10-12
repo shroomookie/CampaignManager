@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 
-using CampaignManager.Web.Models.DTO;
+using CampaignManager.DTO;
 
 namespace CampaignManager.Web.Controllers.API
 {
@@ -17,10 +17,10 @@ namespace CampaignManager.Web.Controllers.API
     {
         private CampaignManagerEntities db = new CampaignManagerEntities();
 
-        private IQueryable<SpelllDTO> MapSpells()
+        private IQueryable<SpellDTO> MapSpells()
         {
             return from s in db.Spells
-                   select new SpelllDTO()
+                   select new SpellDTO()
                    {
                        Id = s.Id,
                        Name = s.Name,
@@ -42,7 +42,7 @@ namespace CampaignManager.Web.Controllers.API
                        Source = s.Source,
                        Hidden = s.Hidden,
                        Levels = from l in s.SpellLevels
-                                select new SpelllDTO.Level()
+                                select new SpellDTO.Level()
                                 {
                                     CharacterClass = l.CharacterClass.Name,
                                     SpellLevel = l.Level
@@ -51,13 +51,13 @@ namespace CampaignManager.Web.Controllers.API
         }
 
         // GET api/Spell
-        public IEnumerable<SpelllDTO> GetSpells()
+        public IEnumerable<SpellDTO> GetSpells()
         {
             return MapSpells().AsEnumerable();
         }
 
         // GET api/Spell/5
-        public SpelllDTO GetSpell(int id)
+        public SpellDTO GetSpell(int id)
         {
             var spell = (from s in MapSpells()
                          where s.Id == id
