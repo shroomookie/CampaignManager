@@ -259,6 +259,11 @@
     <Content Include="App_Data\CampaignManager_log.ldf">
       <DependentUpon>CampaignManager.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -332,7 +337,12 @@
       <DependentUpon>CampaignManager.edmx</DependentUpon>
       <LastGenOutput>CampaignManager.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\VM\Campaign\Edit.js" />
     <Content Include="Scripts\VM\CharacterManager\Edit.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
@@ -402,6 +412,7 @@
     <Content Include="Views\Adventure\Index.cshtml" />
     <Content Include="Views\Session\Index.cshtml" />
     <Content Include="Views\Session\Edit.cshtml" />
+    <Content Include="Views\Shared\Copy of _Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CampaignManager.DTO\CampaignManager.DTO.csproj">
