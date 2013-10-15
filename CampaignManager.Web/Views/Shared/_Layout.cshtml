@@ -4,40 +4,68 @@
         <meta charset="utf-8" />
         <title>@ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/knockout")
         @Styles.Render("~/Content/bootstrap")
         @RenderSection("scripts", required: false)
     </head>
-<body style="">
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
+    <body style="">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Bestiary</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Equipment</a></li>
+                                <li><a href="#">Feats</a></li>
+                                <li><a href="#">Skills</a></li>
+                                <li><a href="#">Spells</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Campaign <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">House Rules</a></li>
+                                <li><a href="#">Campaign Document</a></li>
+                                <li><a href="#">Characters</a></li>
+                                <li><a href="#">Session Summaries</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Players <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Character Manager</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">DM <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Campaign Manager</a></li>
+                                <li><a href="#">Character Manager</a></li>
+                                <li><a href="#">Adventure Manager</a></li>
+                                <li><a href="#">Session Manager</a></li>
+                                <li><a href="#">Encounter Manager</a></li>
+                                <li><a href="#">Treasure Manager</a></li>
+                                <li><a href="#">Combat Tracker</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-
-    <div class="container">
-        @RenderSection("featured", required: false)
-      @RenderBody()
-      
+        <div class="container">
+           @RenderSection("featured", required: false)
+           @RenderBody() 
         </div>
-  
     </body>
 </html>
