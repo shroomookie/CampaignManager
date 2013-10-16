@@ -1,91 +1,72 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" />
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/knockout")
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/bootstrap")
-    @RenderSection("scripts", required: false)
-</head>
-    <body>
-        <div class="container16">
-            <div class="column16">
-                <ul id="nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#">Reference</a>
-                        <ul>
-                            <li><a href="#">Classes</a></li>
-                            <li><a href="#">Equipment</a></li>
-                            <li><a href="#">Feats</a></li>
-                            <li><a href="#">Monsters</a></li>
-                            <li><a href="#">Skills</a></li>
-                            <li><a href="#">Spells</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Campaign</a>
-                        <ul>
-                            <li><a href="#">House Rules</a></li>
-                            <li><a href="#">Campaign Document</a></li>
-                            <li><a href="#">Characters</a></li>
-                            <li><a href="#">Session Summaries</a>
-                                <ul>
-                                    <li><a href="#">Sub-item 01</a></li>
-                                    <li><a href="#">Sub-item 02</a></li>
-                                    <li><a href="#">Sub-item 03</a></li>
-                                    <li><a href="#">Sub-item 04</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Wiki</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Players</a></li>
-                    <li><a href="#">DM</a></li>
-                </ul>
-                <div class="clear"></div>
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/knockout")
+        @Styles.Render("~/Content/bootstrap")
+        @RenderSection("scripts", required: false)
+    </head>
+    <body style="">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Bestiary</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Equipment</a></li>
+                                <li><a href="#">Feats</a></li>
+                                <li><a href="#">Skills</a></li>
+                                <li><a href="#">Spells</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Campaign <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">House Rules</a></li>
+                                <li><a href="#">Campaign Document</a></li>
+                                <li><a href="#">Characters</a></li>
+                                <li><a href="#">Session Summaries</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Players <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Character Manager</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">DM <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Campaign Manager</a></li>
+                                <li><a href="#">Character Manager</a></li>
+                                <li><a href="#">Adventure Manager</a></li>
+                                <li><a href="#">Session Manager</a></li>
+                                <li><a href="#">Encounter Manager</a></li>
+                                <li><a href="#">Treasure Manager</a></li>
+                                <li><a href="#">Combat Tracker</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div id="content" class="container16">
+        <div class="container">
+            <div class="page-header">asdsadfasdfaf</div>
             @RenderSection("featured", required: false)
-            @RenderBody()
+            @RenderBody() 
         </div>
-        <div id="footer" class="container16">
-                footer
-        </div> 
     </body>
-    
-    <script type="text/javascript">
-        function mainmenu() {
-            $('#nav li').hover(
-                function () {
-                    $(this).find('ul:first').stop().slideDown(100);
-                },
-                function () {
-                    $(this).find('ul:first').slideUp(100);
-                }
-            );
-        }
-
-        function tabmenu() {
-            $('#contentFrame div.dynamicDiv').hide();
-            $('#contentFrame div.dynamicDiv:first').show();
-            $('#tabMenu li:first').addClass('active');
-            $('#tabMenu li a').click(function () {
-                $('#tabMenu li').removeClass('active');
-                $(this).parent().addClass('active');
-                var currentTab = $(this).attr('href');
-                $('#contentFrame div.dynamicDiv').hide();
-                $(currentTab).show();
-                return false;
-            });
-        }
-        
-        $(document).ready(function() {
-            mainmenu();
-            tabmenu();
-        });
-    </script>
 </html>
