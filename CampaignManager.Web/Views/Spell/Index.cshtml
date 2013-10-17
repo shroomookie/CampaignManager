@@ -2,7 +2,55 @@
     ViewBag.Title = "Index";
 }
 
-<div class="column16">
+<div class="row">
+    <div class="col-lg-2">
+        <input type="text"/>
+        <select data-bind="
+            options: Spells, 
+            optionsValue: function(race) {return race.Id;}, 
+            optionsText: function(race) {return race.Name;},
+            value: SpellSelect"
+            size ="15"
+            id ="Spell"
+            name ="Spell">
+        </select>
+    </div>
+    <div class ="col-lg-10">
+        <select>
+            <option>All Classes</option>
+        </select>
+        <select>
+            <option>All Levels</option>
+        </select>
+        <select>
+            <option>All Schools</option>
+        </select>
+        <div data-bind="with: Spell">
+            <h2 data-bind="text: Name"></h2>
+            <b>School</b> <span data-bind="text: School"></span>
+            <span data-bind="if: SubSchool">(<span data-bind="text: SubSchool"></span>)</span>
+            <span data-bind="if: Descriptor">[<span data-bind="text: Descriptor"></span>]</span>;
+            <b>Level</b><span data-bind="text: Levels"></span><br />
+            <b>Casting Time</b> <span data-bind="text: CastingTime"></span><br />
+            <b>Components</b> <span data-bind="text: Components"></span><br />
+            <b>Range</b> <span data-bind="text: Range"></span><br />
+            <span data-bind="if: Area">
+                <b>Area</b> <span data-bind="text: Area"></span><br />
+            </span>
+            <span data-bind="if: Effect">
+                <b>Effect</b> <span data-bind="text: Effect"></span><br />
+            </span>
+            <span data-bind="if: Target">
+                <b>Target</b> <span data-bind="text: Target"></span><br />
+            </span>
+            <b>Duration</b> <span data-bind="text: Duration"></span><br />
+            <b>Saving Throw</b> <span data-bind="text: SavingThrow"></span>;
+            <b>Spell Resistance</b> <span data-bind="text: SpellResistance"></span><br />
+            <span data-bind="html: DescriptionFormatted"></span>
+        </div>
+    </div>
+</div>
+<!--<div class="column16">
     <div data-bind="foreach: Spells">
         <h2 data-bind="text: Name"></h2>
         <b>School</b> <span data-bind="text: School"></span>
@@ -30,7 +78,7 @@
         <b>Spell Resistance</b> <span data-bind="text: SpellResistance"></span><br />
         <span data-bind="html: DescriptionFormatted"></span>
     </div>
-</div>
+</div>-->
 
 <script src="/Scripts/Spell.js"></script>
 
